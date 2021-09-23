@@ -1,4 +1,16 @@
 const router = require('express').Router()
+const Recipe = require("./recipes-model")
+
+router.get("/:recipe_id", (req, res, next) => {
+    Recipe.getRecipeById(req.params.recipe_id)
+    .then(data => {
+        res.json(data)
+    })
+    .catch(next)
+})
+
+
+
 
 router.get("/", (req, res, next) => {
     res.send("API UP AND RUNNING IN THE ROUTER")
