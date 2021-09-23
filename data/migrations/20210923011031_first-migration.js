@@ -6,8 +6,8 @@ exports.up = function (knex) {
         tbl.timestamp("created_at").defaultTo(knex.fn.now());
       })
       .createTable("ingredients", (tbl) => {
-        tbl.increments("ingredient_id");
-        tbl.string("ingredient_name", 128)
+        tbl.increments("ingredient_id").notNullable()
+        tbl.string("ingredient_name", 128).notNullable()
       })
       .createTable("steps", (table) => {
         table.increments("step_id");
