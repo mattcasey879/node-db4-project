@@ -3,7 +3,7 @@ exports.up = function(knex) {
     return knex.schema
         .createTable('recipes', tbl => {
             tbl.increments("recipe_id")
-            tbl.string("recipe_name",128).notNullable
+            tbl.string("recipe_name",128).notNullable.unique()
             tbl.timestamp("created_at").defaultTo(knex.fn.now())
         })
         .createTable("ingredients", tbl => {
@@ -14,16 +14,16 @@ exports.up = function(knex) {
         .createTable('steps', table => {
             table.increments('step_id')
             table.string('step_instructions', 150).notNullable()
-            table.integer('ingr_id')
+            table.integer('recipe_id')
               .unsigned()
               .notNullable()
-              .references('ingr_id')
-              .inTable('ingredients')
+              .references('recipe_id')
+              .inTable('recipe')
               .onDelete('RESTRICT')
               .onUpdate('RESTRICT')
           })
           .createTable("recipe_steps", tbl => {
-              
+
           })
 };
 
