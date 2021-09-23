@@ -5,9 +5,10 @@
     "start": "node index.js",
     "server": "nodemon index.js",
     "latest": "npx knex migrate:latest",
-    "down": "npx knex migrate:down",
+    "rollback": "npx knex migrate:rollback",
     "seedmake": "npx knex seed:make",
-    "run": "npx knex seed:run"
+    "seed": "npx knex seed:run",
+    "reset": "npm run rollback && npm run latest && npm run seed"
   },
   "repository": {
     "type": "git",
