@@ -8,7 +8,8 @@
     "rollback": "npx knex migrate:rollback",
     "seedmake": "npx knex seed:make",
     "seed": "npx knex seed:run",
-    "reset": "npm run rollback && npm run latest && npm run seed"
+    "reset": "npm run rollback && npm run latest && npm run seed",
+    "cleanup": "npx knex seed:run --specific=00-cleanup.js"
   },
   "repository": {
     "type": "git",

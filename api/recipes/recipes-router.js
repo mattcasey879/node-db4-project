@@ -20,12 +20,11 @@ router.get("/", (req, res, next) => {
 
 
 
-router.use (( err, req, res, next) => {
+router.use(( err, req, res, next) => {
     res.json(500).json({
         customMessage: "something wernt wrong with the recipes router",
         message: err.message,
         stack: err.stack
-
     })
 })
 
